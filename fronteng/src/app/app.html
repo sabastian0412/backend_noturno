@@ -1,0 +1,72 @@
+<div class="min-h-screen bg-gray-100 p-6 font-sans">
+  <header class="max-w-5xl mx-auto mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">
+      Dashboard eSports
+    </h1>
+
+    <p class="text-gray-500 mt-1">
+      Lista de times ativos no servidor local
+    </p>
+  </header>
+
+  <main class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      @for (time of times; track time.id) {
+
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition">
+
+          <div class="p-5">
+
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-sm font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-md">
+                {{ time.jogo }}
+              </span>
+
+              <span class="text-sm font-semibold text-gray-500">
+                {{ time.rank }}
+              </span>
+            </div>
+
+            <h2 class="text-xl font-semibold text-gray-800">
+              {{ time.nome }}
+            </h2>
+
+            <p class="text-sm text-gray-400 mt-1 mb-5">
+              ID: {{ time.id }}
+            </p>
+
+            <div class="flex items-center justify-between bg-gray-50 border border-gray-100 rounded-lg p-4">
+              <div>
+                <p class="text-xs uppercase text-gray-400 font-medium">
+                  Vitórias
+                </p>
+
+                <p class="text-2xl font-bold text-green-600">
+                  {{ time.vitorias }}
+                </p>
+              </div>
+
+              <div class="text-2xl">
+                🏆
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      } @empty {
+
+        <div class="col-span-full flex flex-col items-center justify-center py-16 text-gray-500">
+
+          <div class="animate-spin rounded-full h-10 w-10 border-2 border-indigo-500 border-t-transparent mb-4"></div>
+
+          <p>Buscando dados no servidor...</p>
+
+        </div>
+
+      }
+
+    </div>
+  </main>
+</div>
